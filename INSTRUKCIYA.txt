@@ -1,0 +1,53 @@
+ИНСТРУКЦИЯ ПО ЗАПУСКУ ПРОЕКТА
+
+Тема практики:
+«Методы и алгоритмы анализа видеопотока регистратора»
+
+1. Открыть папку praktika_cv_final в VS Code.
+
+2. Открыть: Terminal -> New Terminal.
+
+3. Создать виртуальное окружение (делается один раз):
+
+python -m venv .venv
+
+4. Установить библиотеки:
+
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+Если PowerShell запрещает Activate.ps1, активировать окружение не нужно.
+Все команды ниже работают через Python из .venv.
+
+5. Запуск OpenCV:
+
+.\.venv\Scripts\python.exe src\opencv_motion.py
+
+Результат:
+results\opencv_result.mp4
+
+Статистика:
+results\opencv_stats.txt
+
+6. Запуск YOLOv8n:
+
+.\.venv\Scripts\python.exe src\yolo_detect.py
+
+При первом запуске нужен интернет для загрузки модели yolov8n.pt.
+Обучение нейросети с нуля не выполняется: используется предобученная модель.
+
+Результаты:
+results\yolo_frame_results.csv
+results\yolo_stats.txt
+
+Обработанное видео YOLO обычно появляется в:
+runs\detect\predict\
+
+7. Запуск общего меню:
+
+.\.venv\Scripts\python.exe main.py
+
+Выбор:
+1 - только OpenCV
+2 - только YOLOv8n
+3 - оба метода последовательно
+
